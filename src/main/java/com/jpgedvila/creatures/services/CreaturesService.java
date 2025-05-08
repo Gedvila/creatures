@@ -19,6 +19,7 @@ public class CreaturesService {
         this.repository = repository;
     }
 
+    @Transactional(readOnly = true)
     public CreaturesDTO findById(Long id) {
         Creatures creatures = repository.findById(id).orElseThrow(
                 () -> new RuntimeException("Creature not found"));

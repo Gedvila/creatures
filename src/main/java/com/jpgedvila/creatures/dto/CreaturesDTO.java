@@ -14,9 +14,12 @@ public class CreaturesDTO {
     private HealthPoints healthPoints = new HealthPoints();
     private Attributes attributes = new Attributes();
     private Defense defense = new Defense();
-    private Set<CreaturesElement> element = new HashSet<>();
-    private Set<Skills> skills = new HashSet<>();
-    private Set<Actions> actions = new HashSet<>();
+
+    private Set<CreaturesElementDTO> element = new HashSet<CreaturesElementDTO>();
+
+    private Set<SkillsDTO> skills = new HashSet<SkillsDTO>();
+
+    private Set<ActionsDTO> actions = new HashSet<ActionsDTO>();
 
     public CreaturesDTO() {}
 
@@ -28,9 +31,16 @@ public class CreaturesDTO {
         healthPoints = creatures.getHealthPoints();
         attributes = creatures.getAttributes();
         defense = creatures.getDefense();
-        element.addAll(creatures.getElement());
-        skills.addAll(creatures.getSkills());
-        actions.addAll(creatures.getActions());
+
+        for (CreaturesElement ele : creatures.getElement()){
+            element.add(new CreaturesElementDTO(ele));
+        }
+        for (Skills skill : creatures.getSkills()){
+            skills.add(new SkillsDTO(skill));
+        }
+        for (Actions action : creatures.getActions()){
+            actions.add(new ActionsDTO(action));
+        }
     }
 
     public Long getId() {
@@ -61,15 +71,15 @@ public class CreaturesDTO {
         return defense;
     }
 
-    public Set<CreaturesElement> getElement() {
+    public Set<CreaturesElementDTO> getElement() {
         return element;
     }
 
-    public Set<Skills> getSkills() {
+    public Set<SkillsDTO> getSkills() {
         return skills;
     }
 
-    public Set<Actions> getActions() {
+    public Set<ActionsDTO> getActions() {
         return actions;
     }
 }
