@@ -7,6 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_attributes")
 public class Attributes {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,6 +19,7 @@ public class Attributes {
 
     @OneToOne
     @MapsId
+    @JoinColumn(name = "creatures_id")
     private Creatures creatures;
 
     public Attributes(){}
@@ -29,6 +31,14 @@ public class Attributes {
         this.presence = presence;
         this.vitality = vitality;
     }
+
+//    public Attributes(Attributes att){
+//        strength = att.getStrength();
+//        agility = att.getAgility();
+//        intellect = att.getIntellect();
+//        presence = att.getPresence();
+//        vitality = att.getVitality();
+//    }
 
     public Integer getStrength() {
         return strength;
@@ -68,6 +78,18 @@ public class Attributes {
 
     public void setVitality(Integer vitality) {
         this.vitality = vitality;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCreatures(Creatures creatures) {
+        this.creatures = creatures;
     }
 
     @Override

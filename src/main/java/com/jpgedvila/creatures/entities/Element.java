@@ -48,4 +48,8 @@ public class Element {
     public void setCreatures(Set<Creatures> creatures) {
         this.creatures = creatures;
     }
+
+    public void getElementById(Long id){
+        
+    }
 }

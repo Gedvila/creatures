@@ -23,12 +23,12 @@ public class CreaturesController {
         return ResponseEntity.ok().body(dto);
     }
 
-//    @PostMapping
-//    public ResponseEntity<CreaturesDTO> insert(@RequestBody CreaturesDTO dto) {
-//        dto = service.insert(dto);
-//        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-//                .buildAndExpand(dto.getId()).toUri();
-//        return ResponseEntity.created(uri).body(dto);
-//    }
+    @PostMapping
+    public ResponseEntity<CreaturesDTO> insert(@RequestBody CreaturesDTO dto) {
+        dto = service.insert(dto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(dto.getId()).toUri();
+        return ResponseEntity.created(uri).body(dto);
+    }
 
 }

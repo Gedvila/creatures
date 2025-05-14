@@ -11,12 +11,11 @@ public class CreaturesDTO {
     private Long id;
     private String name;
     private Integer vd;
+    private Long elementId;
     private DisturbingPresence disturbingPresence = new DisturbingPresence();
     private HealthPoints healthPoints = new HealthPoints();
     private Attributes attributes = new Attributes();
     private Defense defense = new Defense();
-
-    private CreaturesElementDTO element = new CreaturesElementDTO();
 
     private Set<SkillsDTO> skills = new HashSet<SkillsDTO>();
 
@@ -24,15 +23,15 @@ public class CreaturesDTO {
 
     public CreaturesDTO() {}
 
-    public CreaturesDTO(Long id, String name, Integer vd, DisturbingPresence disturbingPresence, HealthPoints healthPoints, Attributes attributes, Defense defense, CreaturesElementDTO element, Set<SkillsDTO> skills, Set<ActionsDTO> actions) {
+    public CreaturesDTO(Long id, String name, Integer vd, DisturbingPresence disturbingPresence, HealthPoints healthPoints, Attributes attributes, Defense defense, Long elementId, Set<SkillsDTO> skills, Set<ActionsDTO> actions) {
         this.id = id;
         this.name = name;
         this.vd = vd;
+        this.elementId = elementId;
         this.disturbingPresence = disturbingPresence;
         this.healthPoints = healthPoints;
         this.attributes = attributes;
         this.defense = defense;
-        this.element = element;
         this.skills = skills;
         this.actions = actions;
     }
@@ -41,11 +40,12 @@ public class CreaturesDTO {
         id = creatures.getId();
         name = creatures.getName();
         vd = creatures.getVd();
+        elementId = creatures.getElement().getId();
         disturbingPresence = creatures.getDisturbingPresence();
         healthPoints = creatures.getHealthPoints();
         attributes = creatures.getAttributes();
         defense = creatures.getDefense();
-        element = new CreaturesElementDTO(creatures.getElement());
+
 
         for (Skills skill : creatures.getSkills()){
             skills.add(new SkillsDTO(skill));
@@ -83,8 +83,8 @@ public class CreaturesDTO {
         return defense;
     }
 
-    public CreaturesElementDTO getElement() {
-        return element;
+    public Long getElementId() {
+        return elementId;
     }
 
     public Set<SkillsDTO> getSkills() {

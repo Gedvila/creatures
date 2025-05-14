@@ -24,6 +24,7 @@ public class HealthPoints {
 
     @OneToOne
     @MapsId
+    @JoinColumn(name = "creatures_id")
     private Creatures creatures;
 
     public HealthPoints(){}
@@ -41,6 +42,21 @@ public class HealthPoints {
         this.immunity = immunity;
         this.vulnerability = vulnerability;
     }
+
+//    public HealthPoints(HealthPoints hp){
+//        health = hp.getHealth();
+//        ballisticRes = hp.getBallisticRes();
+//        cuttingRes = hp.getCuttingRes();
+//        piercingRes = hp.getPiercingRes();
+//        impactRes = hp.getImpactRes();
+//        bloodRes = hp.getBloodRes();
+//        energyRes = hp.getEnergyRes();
+//        knowledgeRes = hp.getKnowledgeRes();
+//        deathRes = hp.getDeathRes();
+//        immunity = hp.getImmunity();
+//        vulnerability = hp.getVulnerability();
+//
+//    }
 
     public Integer getHealth() {
         return health;
@@ -136,6 +152,10 @@ public class HealthPoints {
 
     public void setVulnerability(String vulnerability) {
         this.vulnerability = vulnerability;
+    }
+
+    public void setCreatures(Creatures creatures) {
+        this.creatures = creatures;
     }
 
     @Override

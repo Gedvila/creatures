@@ -16,6 +16,7 @@ public class DisturbingPresence {
 
     @OneToOne
     @MapsId
+    @JoinColumn(name = "creatures_id")
     private Creatures creatures;
 
     public DisturbingPresence(){}
@@ -25,6 +26,12 @@ public class DisturbingPresence {
         this.mentalDamage = metalDamage;
         this.nexImmunity = nexImmunity;
     }
+
+//    public DisturbingPresence(DisturbingPresence dp){
+//        dt = dp.getDt();
+//        mentalDamage = dp.getMentalDamage();
+//        nexImmunity = dp.getNexImmunity();
+//    }
 
     public Integer getDt() {
         return dt;
@@ -48,6 +55,18 @@ public class DisturbingPresence {
 
     public void setNexImmunity(Integer nexImmunity) {
         this.nexImmunity = nexImmunity;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCreatures(Creatures creatures) {
+        this.creatures = creatures;
     }
 
     @Override

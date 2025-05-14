@@ -1,5 +1,6 @@
 package com.jpgedvila.creatures.entities;
 
+import com.jpgedvila.creatures.dto.CreaturesElementDTO;
 import jakarta.persistence.*;
 
 import java.util.HashSet;

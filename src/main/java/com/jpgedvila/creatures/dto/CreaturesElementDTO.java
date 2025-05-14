@@ -2,6 +2,8 @@ package com.jpgedvila.creatures.dto;
 
 import com.jpgedvila.creatures.entities.Element;
 
+import java.io.Serializable;
+
 public class CreaturesElementDTO {
 
     private Long id;

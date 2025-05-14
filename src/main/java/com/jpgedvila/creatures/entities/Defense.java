@@ -18,6 +18,7 @@ public class Defense {
 
     @OneToOne
     @MapsId
+    @JoinColumn(name = "creatures_id")
     private Creatures creatures;
 
     public Defense(){}
@@ -28,6 +29,13 @@ public class Defense {
         this.reflex = reflex;
         this.will = will;
     }
+
+//    public Defense(Defense def){
+//        creatureDefense = def.getCreatureDefense();
+//        fortitude = def.getFortitude();
+//        reflex = def.getReflex();
+//        will = def.getWill();
+//    }
 
     public Integer getCreatureDefense() {
         return creatureDefense;
@@ -59,6 +67,18 @@ public class Defense {
 
     public void setWill(Integer will) {
         this.will = will;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCreatures(Creatures creatures) {
+        this.creatures = creatures;
     }
 
     @Override

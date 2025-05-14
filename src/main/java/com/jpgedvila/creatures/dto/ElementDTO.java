@@ -2,6 +2,7 @@ package com.jpgedvila.creatures.dto;
 
 import com.jpgedvila.creatures.entities.Creatures;
 import com.jpgedvila.creatures.entities.Element;
+import com.jpgedvila.creatures.entities.Skills;
 import jakarta.persistence.OneToMany;
 
 import java.util.HashSet;
@@ -11,14 +12,17 @@ public class ElementDTO {
 
     private Long id;
     private String name;
-    private Set<Creatures> creatures = new HashSet<>();
+    private Set<CreaturesDTO> creatures = new HashSet<>();
 
     public ElementDTO() {}
 
     public ElementDTO(Element element) {
         id = element.getId();
         name = element.getName();
-        creatures.addAll(element.getCreatures());
+
+        for (Creatures creature : element.getCreatures()){
+            creatures.add(new CreaturesDTO(creature));
+        }
     }
 
     public Long getId() {
@@ -29,7 +33,7 @@ public class ElementDTO {
         return name;
     }
 
-    public Set<Creatures> getCreatures() {
+    public Set<CreaturesDTO> getCreatures() {
         return creatures;
     }
 }
