@@ -2,6 +2,7 @@ package com.jpgedvila.creatures.dto;
 
 import com.jpgedvila.creatures.entities.*;
 
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ public class CreaturesDTO {
     private Attributes attributes = new Attributes();
     private Defense defense = new Defense();
 
-    private Set<CreaturesElementDTO> element = new HashSet<CreaturesElementDTO>();
+    private Element element = new Element();
 
     private Set<SkillsDTO> skills = new HashSet<SkillsDTO>();
 
@@ -31,10 +32,8 @@ public class CreaturesDTO {
         healthPoints = creatures.getHealthPoints();
         attributes = creatures.getAttributes();
         defense = creatures.getDefense();
+        element = creatures.getElement();
 
-        for (CreaturesElement ele : creatures.getElement()){
-            element.add(new CreaturesElementDTO(ele));
-        }
         for (Skills skill : creatures.getSkills()){
             skills.add(new SkillsDTO(skill));
         }
@@ -71,7 +70,7 @@ public class CreaturesDTO {
         return defense;
     }
 
-    public Set<CreaturesElementDTO> getElement() {
+    public Element getElement() {
         return element;
     }
 

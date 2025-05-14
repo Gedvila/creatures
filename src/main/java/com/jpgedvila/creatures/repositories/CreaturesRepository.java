@@ -8,6 +8,4 @@ import java.util.List;
 
 public interface CreaturesRepository extends JpaRepository<Creatures, Long> {
 
-    @Query("SELECT obj FROM Creatures obj JOIN FETCH obj.disturbingPresence JOIN FETCH  obj.healthPoints JOIN FETCH obj.attributes JOIN FETCH obj.defense JOIN FETCH obj.element JOIN FETCH obj.skills JOIN FETCH obj.actions")
-    List<Creatures> findById();
 }

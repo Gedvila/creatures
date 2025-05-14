@@ -130,14 +130,6 @@ public class HealthPoints {
         this.immunity = immunity;
     }
 
-    public Creatures getCreatures() {
-        return creatures;
-    }
-
-    public void setCreatures(Creatures creatures) {
-        this.creatures = creatures;
-    }
-
     public String getVulnerability() {
         return vulnerability;
     }

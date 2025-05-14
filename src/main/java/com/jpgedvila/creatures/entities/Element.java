@@ -14,15 +14,15 @@ public class Element {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "id.element")
-    private Set<CreaturesElement> items = new HashSet<>();
+    @OneToMany(mappedBy = "element")
+    private Set<Creatures> creatures = new HashSet<>();
 
     public Element(){}
 
-    public Element(Long id, String name, Set<CreaturesElement> items) {
+    public Element(Long id, String name, Set<Creatures> creatures) {
         this.id = id;
         this.name = name;
-        this.items = items;
+        this.creatures = creatures;
     }
 
     public Long getId() {
@@ -41,11 +41,11 @@ public class Element {
         this.name = name;
     }
 
-    public Set<CreaturesElement> getItems() {
-        return items;
+    public Set<Creatures> getCreatures() {
+        return creatures;
     }
 
-    public void setItems(Set<CreaturesElement> items) {
-        this.items = items;
+    public void setCreatures(Set<Creatures> creatures) {
+        this.creatures = creatures;
     }
 }

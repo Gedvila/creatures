@@ -1,12 +1,8 @@
 package com.jpgedvila.creatures.services;
 
-import com.jpgedvila.creatures.dto.ActionsDTO;
 import com.jpgedvila.creatures.dto.CreaturesDTO;
-import com.jpgedvila.creatures.dto.CreaturesElementDTO;
-import com.jpgedvila.creatures.dto.SkillsDTO;
 import com.jpgedvila.creatures.entities.*;
 import com.jpgedvila.creatures.repositories.ActionsRepository;
-import com.jpgedvila.creatures.repositories.CreaturesElementRepository;
 import com.jpgedvila.creatures.repositories.CreaturesRepository;
 import com.jpgedvila.creatures.repositories.SkillsRepository;
 import org.springframework.data.domain.Page;
@@ -20,13 +16,11 @@ import java.awt.print.Pageable;
 public class CreaturesService {
 
     private final CreaturesRepository repository;
-    private final CreaturesElementRepository creaturesElementRepository;
     private final ActionsRepository actionsRepository;
     private final SkillsRepository skillsRepository;
 
-    public CreaturesService(CreaturesRepository repository,CreaturesElementRepository creaturesElementRepository, ActionsRepository actionsRepository, SkillsRepository skillsRepository) {
+    public CreaturesService(CreaturesRepository repository, ActionsRepository actionsRepository, SkillsRepository skillsRepository) {
         this.repository = repository;
-        this.creaturesElementRepository = creaturesElementRepository;
         this.actionsRepository = actionsRepository;
         this.skillsRepository = skillsRepository;
     }

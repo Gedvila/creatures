@@ -28,8 +28,8 @@ public class Creatures {
     @OneToOne(mappedBy = "creatures", cascade = CascadeType.ALL)
     private Defense defense = new Defense();
 
-    @OneToMany(mappedBy = "id.creatures")
-    private Set<CreaturesElement> element = new HashSet<>();
+    @ManyToOne
+    private Element element = new Element();
 
     @OneToMany(mappedBy = "creatures")
     private Set<Skills> skills = new HashSet<>();
@@ -39,7 +39,7 @@ public class Creatures {
 
     public Creatures() {}
 
-    public Creatures(Long id, String name, Integer vd, DisturbingPresence disturbingPresence, HealthPoints healthPoints, Attributes attributes, Defense defense, Set<CreaturesElement> element, Set<Skills> skills, Set<Actions> actions) {
+    public Creatures(Long id, String name, Integer vd, DisturbingPresence disturbingPresence, HealthPoints healthPoints, Attributes attributes, Defense defense, Element element, Set<Skills> skills, Set<Actions> actions) {
         this.id = id;
         this.name = name;
         this.vd = vd;
@@ -108,15 +108,11 @@ public class Creatures {
         this.defense = defense;
     }
 
-    public Set<CreaturesElement> getElement() {
+    public Element getElement() {
         return element;
     }
 
-    public void setItems(Set<CreaturesElement> element) {
-        this.element = element;
-    }
-
-    public void setElement(Set<CreaturesElement> element) {
+    public void setElement(Element element) {
         this.element = element;
     }
 
