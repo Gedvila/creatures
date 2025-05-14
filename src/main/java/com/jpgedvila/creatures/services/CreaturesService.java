@@ -2,10 +2,7 @@ package com.jpgedvila.creatures.services;
 
 import com.jpgedvila.creatures.dto.CreaturesDTO;
 import com.jpgedvila.creatures.entities.*;
-import com.jpgedvila.creatures.repositories.ActionsRepository;
-import com.jpgedvila.creatures.repositories.CreaturesRepository;
-import com.jpgedvila.creatures.repositories.ElementRepository;
-import com.jpgedvila.creatures.repositories.SkillsRepository;
+import com.jpgedvila.creatures.repositories.*;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,13 +16,13 @@ public class CreaturesService {
     private final CreaturesRepository repository;
     private final ActionsRepository actionsRepository;
     private final SkillsRepository skillsRepository;
-    private final ElementRepository elementRepository;
+    private final CreaturesElementRepository creaturesElementRepository;
 
-    public CreaturesService(CreaturesRepository repository, ActionsRepository actionsRepository, SkillsRepository skillsRepository, ElementRepository elementRepository) {
+    public CreaturesService(CreaturesRepository repository, ActionsRepository actionsRepository, SkillsRepository skillsRepository, CreaturesElementRepository creaturesElementRepository) {
         this.repository = repository;
         this.actionsRepository = actionsRepository;
         this.skillsRepository = skillsRepository;
-        this.elementRepository = elementRepository;
+        this.creaturesElementRepository = creaturesElementRepository;
     }
 
     @Transactional(readOnly = true)
