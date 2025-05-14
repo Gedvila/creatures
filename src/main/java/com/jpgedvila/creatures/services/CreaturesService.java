@@ -4,6 +4,7 @@ import com.jpgedvila.creatures.dto.CreaturesDTO;
 import com.jpgedvila.creatures.entities.*;
 import com.jpgedvila.creatures.repositories.ActionsRepository;
 import com.jpgedvila.creatures.repositories.CreaturesRepository;
+import com.jpgedvila.creatures.repositories.ElementRepository;
 import com.jpgedvila.creatures.repositories.SkillsRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -18,11 +19,13 @@ public class CreaturesService {
     private final CreaturesRepository repository;
     private final ActionsRepository actionsRepository;
     private final SkillsRepository skillsRepository;
+    private final ElementRepository elementRepository;
 
-    public CreaturesService(CreaturesRepository repository, ActionsRepository actionsRepository, SkillsRepository skillsRepository) {
+    public CreaturesService(CreaturesRepository repository, ActionsRepository actionsRepository, SkillsRepository skillsRepository, ElementRepository elementRepository) {
         this.repository = repository;
         this.actionsRepository = actionsRepository;
         this.skillsRepository = skillsRepository;
+        this.elementRepository = elementRepository;
     }
 
     @Transactional(readOnly = true)
