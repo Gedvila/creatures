@@ -32,13 +32,13 @@ public class Attributes {
         this.vitality = vitality;
     }
 
-//    public Attributes(Attributes att){
-//        strength = att.getStrength();
-//        agility = att.getAgility();
-//        intellect = att.getIntellect();
-//        presence = att.getPresence();
-//        vitality = att.getVitality();
-//    }
+    public Attributes(Attributes att){
+        strength = att.getStrength();
+        agility = att.getAgility();
+        intellect = att.getIntellect();
+        presence = att.getPresence();
+        vitality = att.getVitality();
+    }
 
     public Integer getStrength() {
         return strength;

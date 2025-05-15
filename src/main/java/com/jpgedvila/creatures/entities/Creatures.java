@@ -1,6 +1,5 @@
 package com.jpgedvila.creatures.entities;
 
-import com.jpgedvila.creatures.dto.CreaturesElementDTO;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -17,17 +16,36 @@ public class Creatures {
     private String name;
     private Integer vd;
 
-    @OneToOne(mappedBy = "creatures", cascade = CascadeType.ALL)
-    private DisturbingPresence disturbingPresence = new DisturbingPresence();
+    // Presença Perturbadora
+    private Integer dt;
+    private String mentalDamage;
+    private  Integer nexImmunity;
 
-    @OneToOne(mappedBy = "creatures", cascade = CascadeType.ALL)
-    private HealthPoints healthPoints = new HealthPoints();
+    // Vida e Resistências
+    private Integer health;
+    private Integer ballisticRes;
+    private Integer cuttingRes;
+    private Integer piercingRes;
+    private Integer impactRes;
+    private Integer bloodRes;
+    private Integer energyRes;
+    private Integer knowledgeRes;
+    private Integer deathRes;
+    private String immunity;
+    private String vulnerability;
 
-    @OneToOne(mappedBy = "creatures", cascade = CascadeType.ALL)
-    private Attributes attributes = new Attributes();
+    // Atributos
+    private Integer strength;
+    private Integer agility;
+    private Integer intellect;
+    private Integer presence;
+    private Integer vitality;
 
-    @OneToOne(mappedBy = "creatures", cascade = CascadeType.ALL)
-    private Defense defense = new Defense();
+    // Defesa e testes de resistência
+    private Integer creatureDefense;
+    private Integer fortitude;
+    private Integer reflex;
+    private  Integer will;
 
     @ManyToOne
     private Element element = new Element();
