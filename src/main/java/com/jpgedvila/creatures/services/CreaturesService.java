@@ -43,8 +43,46 @@ public class CreaturesService {
 
         Creatures entity = new Creatures();
 
+        saveEntity(dto,entity);
+
+        if (dto.getElementId() != null) {
+            Element element = elementRepository.findById(dto.getElementId())
+                    .orElseThrow(() -> new RuntimeException("Elemento não encontrado com o ID: " + dto.getElementId()));
+            entity.setElement(element);
+        }
+
+        Set<Actions> actions = new HashSet<>();
+        for (ActionsDTO actionsDTO : dto.getActions()) {
+            Actions action = new Actions();
+            saveActions(entity,actionsDTO,action);
+            actions.add(action);
+        }
+
+        entity.setActions(actions);
+
+        Set<Skills> skills = new HashSet<>();
+        for (SkillsDTO skillDTO : dto.getSkills()) {
+
+            Skills skill = new Skills();
+
+            saveSkills(entity,skillDTO,skill);
+
+            skills.add(skill);
+        }
+        entity.setSkills(skills);
+
+        entity = repository.save(entity);
+        return new CreaturesDTO(entity);
+    }
+
+    private void saveEntity(CreaturesDTO dto,Creatures entity){
         entity.setName(dto.getName());
         entity.setVd(dto.getVd());
+
+        entity.setDt(dto.getDt());
+        entity.setMentalDamage(dto.getMentalDamage());
+        entity.setNexImmunity(dto.getNexImmunity());
+
         entity.setHealth(dto.getHealth());
         entity.setBallisticRes(dto.getBallisticRes());
         entity.setCuttingRes(dto.getCuttingRes());
@@ -69,47 +107,23 @@ public class CreaturesService {
         entity.setFortitude(dto.getFortitude());
         entity.setReflex(dto.getReflex());
         entity.setWill(dto.getWill());
+    }
 
-        if (dto.getElementId() != null) {
-            Element element = elementRepository.findById(dto.getElementId())
-                    .orElseThrow(() -> new RuntimeException("Elemento não encontrado com o ID: " + dto.getElementId()));
-            entity.setElement(element);
-        }
+    private void saveActions(Creatures entity,ActionsDTO actionsDTO,Actions action){
+        action.setCreatures(entity);
+        action.setActionType(actionsDTO.getActionType());
+        action.setName(actionsDTO.getName());
+        action.setDescription(actionsDTO.getDescription());
+        action.setAttackQuantity(actionsDTO.getAttackQuantity());
+        action.setDamage(actionsDTO.getDamage());
+        action.setDamageType(actionsDTO.getDamageType());
+        action.setAttackBonus(actionsDTO.getAttackBonus());
+    }
 
-        Set<Actions> actions = new HashSet<>();
-        for (ActionsDTO actionsDTO : dto.getActions()) {
-
-            Actions action = new Actions();
-
-            action.setCreatures(entity);
-
-            action.setActionType(actionsDTO.getActionType());
-            action.setName(actionsDTO.getName());
-            action.setDescription(actionsDTO.getDescription());
-            action.setAttackQuantity(actionsDTO.getAttackQuantity());
-            action.setDamage(actionsDTO.getDamage());
-            action.setDamageType(actionsDTO.getDamageType());
-            action.setAttackBonus(actionsDTO.getAttackBonus());
-
-            actions.add(action);
-        }
-        entity.setActions(actions);
-
-        Set<Skills> skills = new HashSet<>();
-        for (SkillsDTO skillDTO : dto.getSkills()) {
-
-            Skills skill = new Skills();
-
-            skill.setCreatures(entity);
-            skill.setName(skillDTO.getName());
-            skill.setDescription(skillDTO.getDescription());
-
-            skills.add(skill);
-        }
-        entity.setSkills(skills);
-
-        entity = repository.save(entity);
-        return new CreaturesDTO(entity);
+    private void saveSkills(Creatures entity, SkillsDTO skillsDTO, Skills skills){
+        skills.setCreatures(entity);
+        skills.setName(skillsDTO.getName());
+        skills.setDescription(skillsDTO.getDescription());
     }
 
 }
