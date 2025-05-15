@@ -48,11 +48,9 @@ public class Skills {
         this.description = description;
     }
 
-    public Creatures getCreatures() {
-        return creatures;
-    }
-
     public void setCreatures(Creatures creatures) {
         this.creatures = creatures;
     }
+
+
 }

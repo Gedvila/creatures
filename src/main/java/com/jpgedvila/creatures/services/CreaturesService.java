@@ -45,31 +45,44 @@ public class CreaturesService {
 
         entity.setName(dto.getName());
         entity.setVd(dto.getVd());
+        entity.setHealth(dto.getHealth());
+        entity.setBallisticRes(dto.getBallisticRes());
+        entity.setCuttingRes(dto.getCuttingRes());
+        entity.setPiercingRes(dto.getPiercingRes());
+        entity.setImpactRes(dto.getBallisticRes());
+
+        entity.setBloodRes(dto.getBloodRes());
+        entity.setEnergyRes(dto.getEnergyRes());
+        entity.setKnowledgeRes(dto.getKnowledgeRes());
+        entity.setDeathRes(dto.getDeathRes());
+
+        entity.setImmunity(dto.getImmunity());
+        entity.setVulnerability(dto.getVulnerability());
+
+        entity.setStrength(dto.getStrength());
+        entity.setAgility(dto.getAgility());
+        entity.setIntellect(dto.getIntellect());
+        entity.setPresence(dto.getPresence());
+        entity.setVitality(dto.getVitality());
+
+        entity.setCreatureDefense(dto.getCreatureDefense());
+        entity.setFortitude(dto.getFortitude());
+        entity.setReflex(dto.getReflex());
+        entity.setWill(dto.getWill());
 
         if (dto.getElementId() != null) {
-
             Element element = elementRepository.findById(dto.getElementId())
                     .orElseThrow(() -> new RuntimeException("Elemento não encontrado com o ID: " + dto.getElementId()));
             entity.setElement(element);
-
         }
-
-        Attributes attributes = new Attributes();
-        HealthPoints healthPoints = new HealthPoints();
-        Defense defense = new Defense();
-        DisturbingPresence disturbingPresence = new DisturbingPresence();
-
-        entity.setAttributes(attributes);
-        entity.setHealthPoints(healthPoints);
-        entity.setDefense(defense);
-        entity.setDisturbingPresence(disturbingPresence);
-
-
 
         Set<Actions> actions = new HashSet<>();
         for (ActionsDTO actionsDTO : dto.getActions()) {
 
             Actions action = new Actions();
+
+            action.setCreatures(entity);
+
             action.setActionType(actionsDTO.getActionType());
             action.setName(actionsDTO.getName());
             action.setDescription(actionsDTO.getDescription());
@@ -80,17 +93,20 @@ public class CreaturesService {
 
             actions.add(action);
         }
+        entity.setActions(actions);
 
         Set<Skills> skills = new HashSet<>();
         for (SkillsDTO skillDTO : dto.getSkills()) {
 
             Skills skill = new Skills();
 
+            skill.setCreatures(entity);
             skill.setName(skillDTO.getName());
             skill.setDescription(skillDTO.getDescription());
 
             skills.add(skill);
         }
+        entity.setSkills(skills);
 
         entity = repository.save(entity);
         return new CreaturesDTO(entity);

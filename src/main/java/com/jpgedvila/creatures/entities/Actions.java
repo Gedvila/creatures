@@ -101,6 +101,10 @@ public class Actions {
         this.attackBonus = attackBonus;
     }
 
+    public void setCreatures(Creatures creatures) {
+        this.creatures = creatures;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

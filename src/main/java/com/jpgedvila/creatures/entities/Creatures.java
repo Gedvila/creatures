@@ -50,22 +50,41 @@ public class Creatures {
     @ManyToOne
     private Element element = new Element();
 
-    @OneToMany(mappedBy = "creatures")
+    @OneToMany(mappedBy = "creatures", cascade = CascadeType.PERSIST)
     private Set<Skills> skills = new HashSet<>();
 
-    @OneToMany(mappedBy = "creatures")
+    @OneToMany(mappedBy = "creatures", cascade = CascadeType.PERSIST)
     private Set<Actions> actions = new HashSet<>();
 
     public Creatures() {}
 
-    public Creatures(Long id, String name, Integer vd, DisturbingPresence disturbingPresence, HealthPoints healthPoints, Attributes attributes, Defense defense, Element element, Set<Skills> skills, Set<Actions> actions) {
+    public Creatures(Long id, String name, Integer vd, Integer dt, String mentalDamage, Integer nexImmunity, Integer health, Integer ballisticRes, Integer cuttingRes, Integer piercingRes, Integer impactRes, Integer bloodRes, Integer energyRes, Integer knowledgeRes, Integer deathRes, String immunity, String vulnerability, Integer strength, Integer agility, Integer intellect, Integer presence, Integer vitality, Integer creatureDefense, Integer fortitude, Integer reflex, Integer will, Element element, Set<Skills> skills, Set<Actions> actions) {
         this.id = id;
         this.name = name;
         this.vd = vd;
-        this.disturbingPresence = disturbingPresence;
-        this.healthPoints = healthPoints;
-        this.attributes = attributes;
-        this.defense = defense;
+        this.dt = dt;
+        this.mentalDamage = mentalDamage;
+        this.nexImmunity = nexImmunity;
+        this.health = health;
+        this.ballisticRes = ballisticRes;
+        this.cuttingRes = cuttingRes;
+        this.piercingRes = piercingRes;
+        this.impactRes = impactRes;
+        this.bloodRes = bloodRes;
+        this.energyRes = energyRes;
+        this.knowledgeRes = knowledgeRes;
+        this.deathRes = deathRes;
+        this.immunity = immunity;
+        this.vulnerability = vulnerability;
+        this.strength = strength;
+        this.agility = agility;
+        this.intellect = intellect;
+        this.presence = presence;
+        this.vitality = vitality;
+        this.creatureDefense = creatureDefense;
+        this.fortitude = fortitude;
+        this.reflex = reflex;
+        this.will = will;
         this.element = element;
         this.skills = skills;
         this.actions = actions;
@@ -95,36 +114,188 @@ public class Creatures {
         this.vd = vd;
     }
 
-    public DisturbingPresence getDisturbingPresence() {
-        return disturbingPresence;
+    public Integer getDt() {
+        return dt;
     }
 
-    public void setDisturbingPresence(DisturbingPresence disturbingPresence) {
-        this.disturbingPresence = disturbingPresence;
+    public void setDt(Integer dt) {
+        this.dt = dt;
     }
 
-    public HealthPoints getHealthPoints() {
-        return healthPoints;
+    public String getMentalDamage() {
+        return mentalDamage;
     }
 
-    public void setHealthPoints(HealthPoints healthPoints) {
-        this.healthPoints = healthPoints;
+    public void setMentalDamage(String mentalDamage) {
+        this.mentalDamage = mentalDamage;
     }
 
-    public Attributes getAttributes() {
-        return attributes;
+    public Integer getNexImmunity() {
+        return nexImmunity;
     }
 
-    public void setAttributes(Attributes attributes) {
-        this.attributes = attributes;
+    public void setNexImmunity(Integer nexImmunity) {
+        this.nexImmunity = nexImmunity;
     }
 
-    public Defense getDefense() {
-        return defense;
+    public Integer getHealth() {
+        return health;
     }
 
-    public void setDefense(Defense defense) {
-        this.defense = defense;
+    public void setHealth(Integer health) {
+        this.health = health;
+    }
+
+    public Integer getBallisticRes() {
+        return ballisticRes;
+    }
+
+    public void setBallisticRes(Integer ballisticRes) {
+        this.ballisticRes = ballisticRes;
+    }
+
+    public Integer getCuttingRes() {
+        return cuttingRes;
+    }
+
+    public void setCuttingRes(Integer cuttingRes) {
+        this.cuttingRes = cuttingRes;
+    }
+
+    public Integer getPiercingRes() {
+        return piercingRes;
+    }
+
+    public void setPiercingRes(Integer piercingRes) {
+        this.piercingRes = piercingRes;
+    }
+
+    public Integer getImpactRes() {
+        return impactRes;
+    }
+
+    public void setImpactRes(Integer impactRes) {
+        this.impactRes = impactRes;
+    }
+
+    public Integer getBloodRes() {
+        return bloodRes;
+    }
+
+    public void setBloodRes(Integer bloodRes) {
+        this.bloodRes = bloodRes;
+    }
+
+    public Integer getEnergyRes() {
+        return energyRes;
+    }
+
+    public void setEnergyRes(Integer energyRes) {
+        this.energyRes = energyRes;
+    }
+
+    public Integer getKnowledgeRes() {
+        return knowledgeRes;
+    }
+
+    public void setKnowledgeRes(Integer knowledgeRes) {
+        this.knowledgeRes = knowledgeRes;
+    }
+
+    public Integer getDeathRes() {
+        return deathRes;
+    }
+
+    public void setDeathRes(Integer deathRes) {
+        this.deathRes = deathRes;
+    }
+
+    public String getImmunity() {
+        return immunity;
+    }
+
+    public void setImmunity(String immunity) {
+        this.immunity = immunity;
+    }
+
+    public String getVulnerability() {
+        return vulnerability;
+    }
+
+    public void setVulnerability(String vulnerability) {
+        this.vulnerability = vulnerability;
+    }
+
+    public Integer getStrength() {
+        return strength;
+    }
+
+    public void setStrength(Integer strength) {
+        this.strength = strength;
+    }
+
+    public Integer getAgility() {
+        return agility;
+    }
+
+    public void setAgility(Integer agility) {
+        this.agility = agility;
+    }
+
+    public Integer getIntellect() {
+        return intellect;
+    }
+
+    public void setIntellect(Integer intellect) {
+        this.intellect = intellect;
+    }
+
+    public Integer getPresence() {
+        return presence;
+    }
+
+    public void setPresence(Integer presence) {
+        this.presence = presence;
+    }
+
+    public Integer getVitality() {
+        return vitality;
+    }
+
+    public void setVitality(Integer vitality) {
+        this.vitality = vitality;
+    }
+
+    public Integer getCreatureDefense() {
+        return creatureDefense;
+    }
+
+    public void setCreatureDefense(Integer creatureDefense) {
+        this.creatureDefense = creatureDefense;
+    }
+
+    public Integer getFortitude() {
+        return fortitude;
+    }
+
+    public void setFortitude(Integer fortitude) {
+        this.fortitude = fortitude;
+    }
+
+    public Integer getReflex() {
+        return reflex;
+    }
+
+    public void setReflex(Integer reflex) {
+        this.reflex = reflex;
+    }
+
+    public Integer getWill() {
+        return will;
+    }
+
+    public void setWill(Integer will) {
+        this.will = will;
     }
 
     public Element getElement() {

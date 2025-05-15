@@ -5,11 +5,10 @@ INSERT INTO tb_element (name) VALUES ('Energia');
 INSERT INTO tb_element (name) VALUES ('Sangue');
 
 // Tempestuoso
-INSERT INTO tb_creatures (name,vd,element_id) VALUES ('Tempestuoso',360,4);
-INSERT INTO tb_disturbing (creatures_id,dt,mental_damage,nex_immunity) VALUES (1,40,'8d8',null);
-INSERT INTO tb_health (creatures_id,health,ballistic_res,cutting_res,piercing_res,impact_res,blood_res,energy_res,knowledge_res,death_res,immunity,vulnerability) VALUES (1,950,20,20,20,0,0,20,0,0,'Condições de paralisia','Conhecimento');
-INSERT INTO tb_attributes (creatures_id,strength,agility,intellect,presence,vitality) VALUES (1,4,5,2,5,4);
-INSERT INTO tb_defense (creatures_id,creature_defense,fortitude,reflex,will) VALUES (1,56,20,30,25);
+INSERT INTO tb_creatures (name,vd,element_id,dt,mental_damage,nex_immunity) VALUES ('Tempestuoso',360,4,40,'8d8',null);
+UPDATE tb_creatures SET health=950, ballistic_res=20, cutting_res=20, piercing_res=20, impact_res=0, blood_res=0, energy_res=20, knowledge_res=0, death_res=0, immunity='Condições de paralisia', vulnerability='Conhecimento' WHERE id = 1;
+UPDATE tb_creatures SET strength=4, agility=5, intellect=2, presence=5, vitality=4 WHERE id = 1;
+UPDATE tb_creatures SET creature_defense=56, fortitude=20, reflex=30, will=25 WHERE id = 1;
 INSERT INTO tb_skills(creatures_id,name,description) VALUES (1,'Aura Radioativa','Qualquer ser que comece seu turno em alcance curto do tempestuoso sofre 2d20+20 pontos de dano de Energia (Fortitude DT 40 reduz à metade).');
 INSERT INTO tb_skills(creatures_id,name,description) VALUES (1,'Espectro Radioativo','O tempestuoso manifesta um espectro de radiação à sua volta, que atua como uma extensão de seu corpo físico. Todos os ataques e habilidades corpo a corpo do tempestuoso podem ser feitos em alcance curto.');
 INSERT INTO tb_actions(creatures_id,action_type,name,description,attack_quantity,damage,damage_type,attack_bonus) VALUES (1,'PADRÃO','Agredir','As garras radioativas do tempestuoso podem atingir alvos em alcance curto, mesmo sendo ataques corpo a corpo.',2,'4d20+20','Energia',40);
@@ -18,9 +17,9 @@ INSERT INTO tb_actions(creatures_id,action_type,name,description) VALUES (1,'COM
 
 // Zumbi de Sangue
 INSERT INTO tb_creatures (name,vd,element_id) VALUES ('Zumbi de Sangue',20,5);
-INSERT INTO tb_disturbing (creatures_id,dt,mental_damage,nex_immunity) VALUES (2,40,'2d6',25);
-INSERT INTO tb_health (creatures_id,health,ballistic_res,cutting_res,piercing_res,impact_res,blood_res,energy_res,knowledge_res,death_res,vulnerability) VALUES (2,950,5,0,5,5,10,20,0,0,'Morte');
-INSERT INTO tb_attributes (creatures_id,strength,agility,intellect,presence,vitality) VALUES (2,2,2,0,1,2);
-INSERT INTO tb_defense (creatures_id,creature_defense,fortitude,reflex,will) VALUES (2,15,5,5,5);
+UPDATE tb_creatures SET dt=40, mental_damage='2d6', nex_immunity=25 WHERE id = 2;
+UPDATE tb_creatures SET health=950, ballistic_res=5, cutting_res=0, piercing_res=5, impact_res=5, blood_res=10, energy_res=20, knowledge_res=0, death_res=0, vulnerability='Morte' WHERE id = 2;
+UPDATE tb_creatures SET strength=2, agility=2, intellect=0, presence=1, vitality=2 WHERE id = 2;
+UPDATE tb_creatures SET creature_defense=15, fortitude=5, reflex=5, will=5 WHERE id = 2;
 INSERT INTO tb_actions(creatures_id,action_type,name,description,attack_quantity,damage,damage_type,attack_bonus) VALUES (2,'PADRÃO','Agredir','Ataca com as garras de sangue',2,'1d6+5','Corte',5);
 

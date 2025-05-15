@@ -58,4 +58,5 @@ public class ActionsDTO {
     public Integer getAttackBonus() {
         return attackBonus;
     }
+
 }
