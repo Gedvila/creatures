@@ -7,6 +7,7 @@ import com.jpgedvila.creatures.entities.*;
 import com.jpgedvila.creatures.repositories.*;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -73,6 +74,21 @@ public class CreaturesService {
 
         entity = repository.save(entity);
         return new CreaturesDTO(entity);
+    }
+
+    @Transactional
+    public CreaturesDTO update(Long id, CreaturesDTO dto) {
+            Creatures entity = repository.getReferenceById(id);
+            saveEntity(dto, entity);
+
+            entity = repository.save(entity);
+
+            return new CreaturesDTO(entity);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void delete(Long id) {
+            repository.deleteById(id);
     }
 
     private void saveEntity(CreaturesDTO dto,Creatures entity){
