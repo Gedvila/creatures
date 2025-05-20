@@ -34,7 +34,7 @@ public class CreaturesService {
     }
 
     @Transactional(readOnly = true)
-    public Page<CreaturesDTO> findAll(Pageable pageable) {
+    public Page<CreaturesDTO> findAll(org.springframework.data.domain.Pageable pageable) {
         Page<Creatures> result = repository.findAll((org.springframework.data.domain.Pageable) pageable);
         return result.map(x -> new CreaturesDTO(x));
     }

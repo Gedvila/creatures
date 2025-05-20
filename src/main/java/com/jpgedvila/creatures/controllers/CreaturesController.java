@@ -2,7 +2,10 @@ package com.jpgedvila.creatures.controllers;
 
 import com.jpgedvila.creatures.dto.CreaturesDTO;
 import com.jpgedvila.creatures.services.CreaturesService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -21,6 +24,12 @@ public class CreaturesController {
     public ResponseEntity<CreaturesDTO>findById(@PathVariable Long id) {
         CreaturesDTO dto = service.findById(id);
         return ResponseEntity.ok().body(dto);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<CreaturesDTO>> findAll(Pageable pageable) {
+        Page<CreaturesDTO> dto = service.findAll(pageable);
+        return ResponseEntity.ok(dto);
     }
 
     @PostMapping
